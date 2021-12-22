@@ -1,0 +1,2 @@
+mongorestore -d douban /home/ubuntu/公共的/期末大作业案例/douban_Website-master/doubanDatabase/douban
+
