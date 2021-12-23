@@ -11,8 +11,14 @@ exports.captcha = function(req,res) {
     return res.end('');
   }
   // var ary = ccap.get();
-  // captcha = ary[0];                               // 生成验证码
-  res.end('1234');
+  // captcha = ary[0];  
+  var ary = 0                             // 生成验证码
+  for(var i = 0;i<4;i++)
+  {
+    ary =  Math.floor(Math.random() * 10)+ary*10;
+  }	
+  console.log('获取的验证码为：'+ary)
+  res.end(ary.toString());
 };
 
 /* 用户注册控制器 */
