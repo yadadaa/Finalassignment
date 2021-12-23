@@ -19,6 +19,7 @@ exports.captcha = function(req,res) {
   }	
   console.log('获取的验证码为：'+ary)
   res.end(ary.toString());
+  captcha = ary.toString()
 };
 
 /* 用户注册控制器 */
@@ -46,21 +47,21 @@ exports.signup = function(req,res) {
       return res.json({data:0});
     }else{
       // 验证码存在
-      // if (captcha) {
-      //   if(_captcha.toLowerCase() !== captcha.toLowerCase()) {
-      //     res.json({data:1});                // 输入的验证码不相等
-      //   }else {
-      //     // 数据库中没有该用户名，将其数据生成新的用户数据并保存至数据库
-      //     user = new User(_user);            // 生成用户数据
-      //     user.save(function(err,user) {
-      //       if(err){
-      //         console.log(err);
-      //       }
-      //       req.session.user = user;         // 将当前登录用户名保存到session中
-      //       return res.json({data:2});       // 注册成功
-      //     });
-      //   }
-      // }
+      if (captcha) {
+        if(_captcha.toLowerCase() !== captcha.toLowerCase()) {
+          res.json({data:1});                // 输入的验证码不相等
+        }else {
+          // 数据库中没有该用户名，将其数据生成新的用户数据并保存至数据库
+          user = new User(_user);            // 生成用户数据
+          user.save(function(err,user) {
+            if(err){
+              console.log(err);
+            }
+            req.session.user = user;         // 将当前登录用户名保存到session中
+            return res.json({data:2});       // 注册成功
+          });
+        }
+      }
       console.log('用户不存在')
     }
   });
@@ -103,14 +104,14 @@ exports.signin = function(req,res) {
       // 密码匹配
       if(isMatch) {
         // 验证码存在
-        // if (captcha) { 
-          // if(_captcha.toLowerCase() !== captcha.toLowerCase()) {
-          //   res.json({data:2});                     // 输入的验证码不相等
-          // }else {
+        if (captcha) { 
+          if(_captcha.toLowerCase() !== captcha.toLowerCase()) {
+            res.json({data:2});                     // 输入的验证码不相等
+          }else {
             req.session.user = user;                // 将当前登录用户名保存到session中
             return res.json({data:3});              // 登录成功
-          // }
-        // }
+          }
+        }
       }else {
         // 账户名和密码不匹
         return res.json({data:1});
