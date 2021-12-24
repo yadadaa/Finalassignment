@@ -5,8 +5,13 @@ block link
   meta(name="keywords" content="电影、经典电影、热映、电视剧、美剧、影评、电影院、电影票、排行、推荐")
   meta(name="description" content="豆瓣电影提供最新的电影介绍及评论包括上映影片的影讯查询及购票服务。你可以记录想看、在看和看过的电影电视剧，顺便打分、写影评。根据你的口味，豆瓣电影会推荐好电影给你。")
   link(href="/libs/css/movie/movie_index.min.css",rel="stylesheet")
+
 block content
   // 容器标签节点
+  .left-advertisement 
+              a(href="https://movie.douban.com/annual/2021") 
+                img(src="/libs/images/movie/middleImg/1.jpg" alt="dianyingjie_lImg")
+  //页面修改  增添链接
   .wrapper
     .content
       .container-fluid
@@ -41,9 +46,6 @@ block content
                               h5 #{item.title}
                               p: a.btn.btn-primary(href="/movie/#{item._id}" role="button" target="_blank") 观看预告片
             // 顶部轮播图下方广告标签节点 电影节图片
-            .left-advertisement
-              a(href="javascript:;")
-                img(src="/libs/images/movie/middleImg/1.jpg" alt="dianyingjie_lImg")
             // 选电影/选电视剧标签节点
             #fliterMovies.fliter-movies
               .screen
@@ -137,11 +139,11 @@ block content
                       .slide-hd
                         p 基努·里维斯、凯瑞-安·莫斯与导演拉娜·沃卓斯基等原班人马回归！1月14日内地上映！
                   li.slide-item
-                    a(href="ttps://movie.douban.com/annual/2021?from=gallery")
+                    a(href="https://movie.douban.com/annual/2021?from=gallery")
                       img(src="/libs/images/movie/galleryFrames/1.jpg" alt="「豆瓣2021年度电影榜单」揭晓")
                     .slide-detail
                       .slide-hd
-                        a(href="ttps://movie.douban.com/annual/2021?from=gallery" target="_blank")
+                        a(href="https://movie.douban.com/annual/2021?from=gallery" target="_blank")
                           h5 「豆瓣2021年度电影榜单」揭晓
                       .slide-hd
                         p 点击查看完整榜单，开启全年佳片好剧大赏
@@ -232,6 +234,6 @@ block content
             // 本周口碑榜下方广告部分节点标签
             .right-advertisement
               a(href="javascript:;")
-                img(src="/libs/images/movie/advertisements/2.jpg")
+                img(src="/libs/images/movie/advertisements/xiongshishaonian.webp")
   // 电影首页JS脚本
   script(src="/libs/scripts/js/movie/movie_index.min.js")
