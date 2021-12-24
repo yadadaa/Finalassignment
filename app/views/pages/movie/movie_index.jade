@@ -58,24 +58,16 @@ block content
                     li
                       button.btn.btn-primary 热门
                     li
-                      button.btn.btn-default 最新
-                    li
-                      button.btn.btn-default 经典
-                    li
                       button.btn.btn-default 豆瓣高分
                     li
-                      button.btn.btn-default 冷门佳片
+                      button.btn.btn-default 本周口碑榜
                     li
-                      button.btn.btn-default 华语
-                    li
-                      button.btn.btn-default 欧美
-                    li
-                      button.btn.btn-default 韩国
+                      button.btn.btn-default 即将上映
                   hr
-                // 热门电影标签节点
+                // 热门电影标签节点 //将正在上映的电影放在首页分类栏下显示 test
                 .screen-body
                   each cat in categories
-                    if cat.name === '热门电影'
+                    if cat.name === '正在上映' 
                       .panel.panel-default
                         #classBody.panel-body.screen-body
                           if cat.movies && cat.movies.length > 0
@@ -86,7 +78,7 @@ block content
                                     if item.poster.indexOf('http') > -1
                                       img(src="#{item.poster}", alt="#{item.title}")
                                     else
-                                      img(src="/upload/#{item.poster}", alt="#{item.title}")
+                                      img(src="/upload/movie/#{item.poster}", alt="#{item.title}")
                                   .caption
                                     h5 #{item.title}
                         a.more(href="javascript:;" role="button") 加载更多

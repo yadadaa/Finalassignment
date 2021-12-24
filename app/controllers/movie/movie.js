@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 var mongoose = require('mongoose'),
     Movie = mongoose.model('Movie'),                       // 电影数据模型
     MovieComment = mongoose.model('MovieComment'),         // 电影评论模型
@@ -58,22 +60,30 @@ exports.new = function(req,res) {
 
 // 存储海报控制器
 exports.savePoster = function(req, res, next) {
+  console.log('使用海报控制器');
   // 如果有文件上传通过connect-multiparty中间件生成临时文件并通过req.files进行访问
   // 并且当提交表单中有文件上传请求时表单要使用enctype="multipart/form-data"编码格式
   var posterData = req.files.uploadPoster,                    // 上传文件
       filePath = posterData.path,                             // 文件路径
       originalFilename = posterData.originalFilename;         // 原始名字
+  console.log('文件路径：'+filePath);
+  console.log('原始名字：'+originalFilename);
   // 如果有自定义上传图片，则存在文件名
   if(originalFilename) {
     fs.readFile(filePath, function(err,data) {
       if(err) {
+        console.log('读取文件错了');
         console.log(err);
       }
+      console.log('选择自定义上传海报'); //检查海报路径
       var timestamp = Date.now(),                             // 获取时间
           type = posterData.type.split('/')[1],               // 获取图片类型 如jpg png
           poster = timestamp + '.' + type,                    // 上传海报新名字
+          // movie_name = req.files.title,     //获取电影名称
           // 将新创建的海报图片存储到/public/upload 文件夹下
           newPath = path.join(__dirname,'../../../','/public/upload/movie/' + poster);
+      // console.log('该海报文件名：'+movie_name); //检查海报名称
+      console.log('该海报路径名：'+newPath); //检查海报路径
       // 写入文件
       fs.writeFile(newPath,data,function(err) {
         if(err) {

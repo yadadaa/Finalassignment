@@ -13,8 +13,8 @@ block content
             if movie.poster.indexOf('http:') > -1
               img(src="#{movie.poster}" alt="#{movie.title}")
             else
-              // 电影海报为自行上传
-              img(src="/upload/movie/#{movie.poster}" alt="#{movie.title}")
+              // 电影海报为自行上传 
+              img(src="/upload/movie/#{movie.poster}" alt="#{movie.title}") 
             .detail-info.dl-horizontal
               dt 又名:
               dd= movie.aka
@@ -36,9 +36,7 @@ block content
                 .rating-img.star
           h4 #{movie.title}剧情简介&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·
           p.intro #{movie.summary}
-      .detaile.col-md-6.col-xs-6
-        if movie
-          embed(src="#{movie.flash}" allowFullScreen="true" quality="high" width="100%" height="400" align="middle" allowScriptAcess="always" type="application/x-shockwave-flash")
+      
     .row
       .detaile-content.col-md-6.col-md-offset-1.col-xs-6
         .panel.panel-defatul
