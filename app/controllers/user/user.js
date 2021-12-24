@@ -17,7 +17,7 @@ exports.captcha = function(req,res) {
   {
     ary =  Math.floor(Math.random() * 10)+ary*10;
   }	
-  console.log('获取的验证码为：'+ary)
+  // console.log('获取的验证码为：'+ary)
   res.end(ary.toString());
   captcha = ary.toString()
 };
