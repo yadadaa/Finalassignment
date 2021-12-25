@@ -139,7 +139,8 @@ exports.save = function(req,res) {
             console.log(err);
           }
           // 将其id值添加到电影分类的movies属性中并保存
-          _newCat.movies.push(id); //4.1版本之前的mongodb不支持push
+          //db.class.update({name: "class1"}, {$addToSet:{student:{name: "zhaoliu", age: 17}}});
+          _newCat.movies.addToSet(id); //4.1版本之前的mongodb不支持push 改用addToSet
           console.log('获取到的_newCat：'+_newCat);
           _newCat.save(function(err) {
             if (err) {
@@ -180,7 +181,7 @@ exports.save = function(req,res) {
               if(err){
                 console.log(err);
               }
-              _category.movies.push(_newMovie._id);
+              _category.movies.addToSet(_newMovie._id); //改用addToSet方式插入数据
               _category.save(function(err) {
                 if(err){
                   console.log(err);
