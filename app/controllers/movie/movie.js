@@ -105,6 +105,7 @@ exports.save = function(req,res) {
       id = movieObj._id,
       categoryId = movieObj.category,              // 获取电影分类ID
       categoryName = movieObj.categoryName;        // 获取新创建的电影分类名称
+  console.log('获取的电影分类名称categoryName：'+categoryName)
   // 如果有自定义上传海报  将movieObj中的海报地址改成自定义上传海报的地址
   if(req.poster) {
     movieObj.poster = req.poster;
@@ -133,11 +134,13 @@ exports.save = function(req,res) {
         });
         // 找到电影对应的新电影分类
         Category.findById(movieObj.category,function(err,_newCat) {
+          console.log('获取到的电影分类movieObj.category：'+movieObj.category);
           if (err) {
             console.log(err);
           }
           // 将其id值添加到电影分类的movies属性中并保存
-          _newCat.movies.push(id);
+          _newCat.movies.push(id); //4.1版本之前的mongodb不支持push
+          console.log('获取到的_newCat：'+_newCat);
           _newCat.save(function(err) {
             if (err) {
               console.log(err);
