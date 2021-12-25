@@ -124,6 +124,7 @@ exports.save = function(req,res) {
             console.log(err);
           }
           // 在原电影分类的movies属性中找到该电影的id值并将其删除
+          // 出现问题 删除movies属性中的电影id值后，movie数据库中的id值未改变  
           var index = _oldCat.movies.indexOf(id);
           _oldCat.movies.splice(index,1);
           _oldCat.save(function(err) {
@@ -134,7 +135,7 @@ exports.save = function(req,res) {
         });
         // 找到电影对应的新电影分类
         Category.findById(movieObj.category,function(err,_newCat) {
-          console.log('获取到的电影分类movieObj.category：'+movieObj.category);
+          // console.log('获取到的电影分类movieObj.category：'+movieObj.category);
           if (err) {
             console.log(err);
           }
