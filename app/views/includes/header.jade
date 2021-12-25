@@ -2,7 +2,6 @@
   .container-fluid
     .navbar-header.clearfix
       a.navbar-brand(href="/") 电影
-      a.navbar-brand(href="/musicIndex") 音乐
     if user
       p.navbar-text.navbar-right
         a: span 欢迎您:#{user.name}
@@ -77,10 +76,7 @@
         - var logoName = '电影'
         a(href="/")
           img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
-      else
-        - var logoName = '音乐'
-        a(href="/musicIndex")
-          img(src="/libs/images/#{logo}/#{logo}Logo.png" alt="#{logo}Logo" style="width:115px;height:27px;")
+      
     .nav-search
       form(method='GET' action='/#{logo}/results')
         .input-group
@@ -95,9 +91,6 @@
         li: a(href="/admin/#{logo}/list" target="_blank") #{logoName}列表页
         li: a(href="/admin/#{logo}/#{logo}Category/new" target="_blank") #{logoName}分类录入页
         li: a(href="/admin/#{logo}/#{logo}Category/list" target="_blank") #{logoName}分类列表页
-        if logo == 'movie'
-          li: a(href="/admin/movie/city/new" target="_blank") 电影院录入页
-          li: a(href="/admin/movie/city/list" target="_blank") 电影院列表页
-        else
-          li: a(href="/admin/music/programme/list" target="_blank") 热门榜单列表页
+        li: a(href="/admin/movie/city/new" target="_blank") 电影院录入页
+        li: a(href="/admin/movie/city/list" target="_blank") 电影院列表页
         li: a(href="/admin/user/list" target="_blank") 用户列表页

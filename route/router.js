@@ -8,14 +8,7 @@ var MovieIndex = require('../app/controllers/movie/movie_index'), 		// 电影首
 		Category = require('../app/controllers/movie/movie_category'),		// 电影分类控制器
 		City = require('../app/controllers/movie/movie_city'),       			// 电影院分类控制器
 
-		// 音乐首页模块路由控制器
-		MusicIndex = require('../app/controllers/music/music_index'), 		// 音乐首页控制器
-		Music = require('../app/controllers/music/music'),   							// 音乐模块路由控制器
-		// 音乐分类控制器
-		MusicCategory = require('../app/controllers/music/music_category'),
-		// 音乐热门榜单控制器
-		Programmer = require('../app/controllers/music/music_programme'),
-		MusicComment = require('../app/controllers/music/music_comment'), // 音乐评论控制器
+		
 
 		multipart = require('connect-multiparty'),											  // 处理文件上传中间件
 		multipartMiddleware = multipart();
@@ -97,50 +90,4 @@ module.exports = function(app){
 			 .get(User.signinRequired,User.adminRequired,City.list)
 			 .delete(City.del);
 
-	/*============== 豆瓣音乐网站路由 */	
-	// 音乐主页路由
-	app.get('/musicIndex',MusicIndex.index);
-
-	// 豆瓣音乐搜索结果页
-	app.get('/music/results',MusicIndex.search);
-
-	// 音乐详细页面路由
-	app.route('/music/:id')
-		 	 .get(Music.detail)
-			 .delete(MusicComment.del);
-
-	// 用户评论
-	app.post('/admin/music/musicComment',User.signinRequired,MusicComment.save);
-
-	// 更新豆瓣音乐路由
-	app.get('/admin/music/update/:id',User.signinRequired,User.adminRequired,Music.update);
-
-	// 后台录入路由
-	app.route('/admin/music/new')
-		 .get(User.signinRequired,User.adminRequired,Music.new)
-		 .post(multipartMiddleware,User.signinRequired, User.adminRequired, Music.savePoster, Music.save);
-
-	// 豆瓣音乐列表路由
-	app.route('/admin/music/list')
-			 .get(User.signinRequired,User.adminRequired,Music.list)
-			 .delete(Music.del);
-
-	// 豆瓣音乐分类录入页路由
-	app.route('/admin/music/musicCategory/new')
-			 .get(User.signinRequired,User.adminRequired,MusicCategory.new)
-			 .post(User.signinRequired,User.adminRequired,MusicCategory.save);
-
-	// 豆瓣音乐分类列表页路由
-	app.get('/admin/music/musicCategory/list',User.signinRequired,User.adminRequired,MusicCategory.list);
-
-	// 豆瓣音乐分类更新路由
-	app.get('/admin/music/musicCategory/update/:id',User.signinRequired,User.adminRequired,MusicCategory.update);
-
-	// 音乐分类列表删除路由
-	app.delete('/admin/music/musicCategory/list',MusicCategory.del);
-
-	// 音乐热门榜单路由
-	app.route('/admin/music/programme/list')
-			 .get(User.signinRequired,User.adminRequired,Programmer.list)
-			 .delete(Programmer.del);
 };
