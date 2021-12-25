@@ -36,9 +36,12 @@ block content
                 .rating-img.star
           h4 #{movie.title}剧情简介&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·
           p.intro #{movie.summary}
-      
+      .detaile.col-md-6.col-xs-6
+        img(src="/upload/movie/#{movie.poster}" alt="#{movie.title}" 	width="300px" height="400px")
+        p: a.btn.btn-primary(href="#{movie.flash}", role="button" ) 观看预告片
+               
     .row
-      .detaile-content.col-md-6.col-md-offset-1.col-xs-6
+      .detaile-content.col-md-9.col-md-offset-1.col-xs-6
         .panel.panel-defatul
           .panel-heading
             h4 评论区
