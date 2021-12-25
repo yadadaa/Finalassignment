@@ -67,7 +67,7 @@ block content
                 // 热门电影标签节点 //将正在上映的电影放在首页分类栏下显示 test
                 .screen-body
                   each cat in categories
-                    if cat.name === '正在上映' 
+                    if cat.name === '热门电影' 
                       .panel.panel-default
                         #classBody.panel-body.screen-body
                           if cat.movies && cat.movies.length > 0
@@ -152,7 +152,7 @@ block content
           .col-md-4
             .cinemas-search
               #citySearch.city
-                span 广州
+                span 杭州
                 i.glyphicon.glyphicon-triangle-bottom
                 #citiesList.cities-list(style="display:none")
                   // 电影院标题分类名称
@@ -203,9 +203,9 @@ block content
             .right-advertisementList
               h4 电影活动&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·
               ul
-                li: a(href="javascript:;") 观影大福利！《头脑特工队》周边限量抢
+                li: a(href="https://www.douban.com/doulist/36980/") 《看电影》盘点40部最经典恐怖片（2006）
                 li: a(href="javascript:;") 【有奖】怒吼你心中的怪兽(╰_╯)#
-                li: a(href="javascript:;") 资讯|《小王子》曝光终极预告海报
+                li: a(href="javascript:;") 资讯|《阿凡达2》曝光终极预告海报
             // 本周口碑榜节点标签
             .billboard
               each cat in categories

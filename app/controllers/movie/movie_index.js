@@ -32,7 +32,7 @@ exports.index = function(req,res){
             // 其中匹配成功的如[ '广州', index: 0, input: '广州飞扬影城正佳店' ]所示
             searchCinemas.forEach(function(each) {
               if(each.match(_searchName) && each.match(_searchName).input) {
-                results.push(each);
+                results.addToSet(each);
               }
             });
           // 返回该城市对应的全部电影院列表

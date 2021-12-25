@@ -84,7 +84,7 @@ exports.save = function(req, res) {
               name:cityCategoryName                         // 城市分类名称
             });
             newCityCategory.cityProgramme = cityProgrammeId;// 分类归类属性指向当前归类
-            _oldCityProgramme.cityCategories.push(newCityCategory._id);
+            _oldCityProgramme.cityCategories.addToSet(newCityCategory._id);
             newCityCategory.save(function(err) {
               if(err) {
                 console.log(err);
@@ -123,15 +123,15 @@ exports.save = function(req, res) {
           var cityCategoryArray = [];
           // 判断选择了几个城市分类，如果只选择一个，则cityCategoryId值为String，否则为Array
           if(typeof cityCategoryId === 'string') {
-            cityCategoryArray.push(cityCategoryId);
+            cityCategoryArray.addToSet(cityCategoryId); //同理解决城市增添问题
           }else {
             cityCategoryArray = cityCategoryId;
           }
           for(var i = 0; i < cityCategoryArray.length; i++) {
             CityCategory.findById(cityCategoryArray[i], function(err, _oldCityCategory) {
               if(_oldCityCategory) {
-                newCity.cityCategories.push(_oldCityCategory._id);
-                _oldCityCategory.cities.push(newCity._id);
+                newCity.cityCategories.addToSet(_oldCityCategory._id);
+                _oldCityCategory.cities.addToSet(newCity._id);
                 _oldCityCategory.save(function(err) {
                   if(err) {
                     console.log(err);
@@ -160,7 +160,7 @@ exports.save = function(req, res) {
       City.findById(cityId,function(err,_city) {
         // 如果该城市中电影院不存在 则添加到该城市的cinemas属性中并保存
         if(_city.cinemas.indexOf(cinemas) === -1) {
-          _city.cinemas.push(cinemas);
+          _city.cinemas.addToSet(cinemas);
           _city.save(function(err) {
             if (err) {
               console.log(err);
@@ -229,7 +229,7 @@ exports.del = function(req,res) {
       var cityArray = [];
       // 判断删除城市分类中包含几个城市，如果只有一个，则_cityCategory.cities值为String，否则为Array
       if(typeof _cityCategory.cities === 'string') {
-        cityArray.push(_cityCategory.cities);
+        cityArray.addToSet(_cityCategory.cities);
       }else {
         cityArray = _cityCategory.cities;
       }

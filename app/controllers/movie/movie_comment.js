@@ -18,7 +18,7 @@ exports.save = function(req,res) {
           createAt: Date.now()
         }
       };
-      comment.reply.push(reply);          					// 添加到评论的数组中
+      comment.reply.addToSet(reply);          					// 添加到评论的数组中
       // 保存该条评论的回复内容
       comment.save(function(err,comment) {
         if(err) {

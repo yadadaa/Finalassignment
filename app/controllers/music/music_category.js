@@ -56,7 +56,7 @@ exports.save = function(req, res) {
             console.log(err);
           }
           // 将其musicCatId值添加到musicCategories属性中并保存
-          _newProgramme.musicCategories.push(musicCatId);
+          _newProgramme.musicCategories.addToSet(musicCatId);
           _newProgramme.save(function(err) {
             if (err) {
               console.log(err);
