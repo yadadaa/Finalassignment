@@ -38,3 +38,5 @@
 19.对页面进行删改
 
 20.解决由于adobe flash player不支持问题
+
+21.数据库 的导入 和导出  https://www.cnblogs.com/jingsupo/p/14111593.html

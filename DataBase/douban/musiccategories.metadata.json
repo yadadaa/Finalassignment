@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"douban.musiccategories"}],"uuid":"0935c9a5123640e6966ec33bf5835eb3"}
