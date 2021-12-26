@@ -40,3 +40,5 @@
 20.解决由于adobe flash player不支持问题
 
 21.数据库 的导入 和导出  https://www.cnblogs.com/jingsupo/p/14111593.html
+
+22.在首页点击四个电影分类按钮无反应
