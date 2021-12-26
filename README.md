@@ -42,3 +42,5 @@
 21.数据库 的导入 和导出  https://www.cnblogs.com/jingsupo/p/14111593.html
 
 22.在首页点击四个电影分类按钮无反应
+
+23.movie_index.js中 关于fliterMovies.class-top 按钮切换 的ajax不起作用

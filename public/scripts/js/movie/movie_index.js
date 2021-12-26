@@ -190,22 +190,24 @@ $(function() {
         选电影/电视剧区JS代码
         导航栏点击事件
     */
-    $('#fliterMovies .class-top').on('click','button',function() {
+    $('#fliterMovies.class-top').on('click','button',function() {
+      console.log('点击')
       // 只有点击不同按钮才触发Ajax事件，避免对同一个按钮重复点击触发请求
       if($(this).is('.btn-primary')) {
-        console.log('重复点击')
+        console.log('repeat')
         return;
-      }else {
+      }else { 
         var fliterName = $(this).html();      // 获取按钮文字内容
         var URL = '/?fliterName=' + encodeURIComponent(fliterName + '电影');// 对中文进行编码
         // 发送Ajax请求
-        console.log('fliterName + 电影:'+fliterName + '电影');
+        console.log('fliterName :'+fliterName);
         console.log('URL : '+ URL)
         funAjax(URL,'GET',function(results) {
           if (results.data === null || results.data.movies.length === 0) {
             $('#classBody').html('');
-            console.log('没找到')
+            console.log('none')
           }else {
+            console.log('have')
             var data = results.data.movies;   						// 获取Ajax返回的电影数据
             var oThumbnail = $('#classBody .thumbnail');  // 获取电影列表中电影数量
             var dataStart = data.length - 1; 							// 获取切换到另外分类返回电影数据数量
