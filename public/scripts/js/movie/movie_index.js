@@ -53,6 +53,7 @@ $(function() {
       // 点击电影展示区正在上映或即将上映标题发送Ajax请求切换电影展示内容
       $oTitle.on('click',function() {
         var galleryName = $(this).text();               // 获取点击标题内容
+        console.log('click galleryName：'+galleryName)
         var URL = '/?galleryName=' + encodeURIComponent(galleryName);
 
         funAjax(URL,'GET',function(results) {
@@ -198,7 +199,13 @@ $(function() {
         return;
       }else { 
         var fliterName = $(this).html();      // 获取按钮文字内容
-        var URL = '/?fliterName=' + encodeURIComponent(fliterName + '电影');// 对中文进行编码
+        var URL;
+        if (fliterName == '热门') //如果点击的按钮是热门
+          URL = '/?fliterName=' + encodeURIComponent(fliterName + '电影');// 对中文进行编码
+        else if(fliterName == '豆瓣高分') //如果点击的按钮是豆瓣高分
+          URL = '/?fliterName=' + encodeURIComponent(fliterName + '电影');// 对中文进行编码
+        else
+          URL = '/?fliterName=' + encodeURIComponent(fliterName);// 对中文进行编码
         // 发送Ajax请求
         console.log('fliterName :'+fliterName);
         console.log('URL : '+ URL)

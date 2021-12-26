@@ -45,4 +45,6 @@
 
 23.movie_index.js中 关于fliterMovies.class-top 按钮切换 的ajax不起作用
 
-23.无法在数据库movie中找到galleryname
+23.无法在数据库movie中找到categoryName
+
+24.movie_index.js 页面分类逻辑有问题
