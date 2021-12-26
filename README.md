@@ -44,3 +44,5 @@
 22.在首页点击四个电影分类按钮无反应
 
 23.movie_index.js中 关于fliterMovies.class-top 按钮切换 的ajax不起作用
+
+23.无法在数据库movie中找到galleryname

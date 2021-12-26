@@ -191,7 +191,7 @@ $(function() {
         导航栏点击事件
     */
     $('#fliterMovies.class-top').on('click','button',function() {
-      console.log('点击')
+      console.log($(this))
       // 只有点击不同按钮才触发Ajax事件，避免对同一个按钮重复点击触发请求
       if($(this).is('.btn-primary')) {
         console.log('repeat')
