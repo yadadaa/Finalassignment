@@ -62,7 +62,11 @@ block content
                     li
                       button.btn.btn-default 本周口碑榜
                     li
-                      button.btn.btn-default 即将上映
+                      button.btn.btn-default 最新
+                    li
+                      button.btn.btn-default 冷门佳片
+                    li
+                      button.btn.btn-default 华语
                   hr
                 // 热门电影标签节点 //将正在上映的电影放在首页分类栏下显示 test
                 .screen-body
@@ -209,7 +213,7 @@ block content
             // 本周口碑榜节点标签
             .billboard
               each cat in categories
-                if cat.name === '本周口碑榜'
+                if cat.name === '本周口碑榜电影'
                   .billboard-hd
                     h4 本周口碑榜
                   .billboard-bd

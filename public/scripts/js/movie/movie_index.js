@@ -55,7 +55,7 @@ $(function() {
         var galleryName = $(this).text();               // 获取点击标题内容
         console.log('click galleryName：'+galleryName)
         var URL = '/?galleryName=' + encodeURIComponent(galleryName);
-
+        console.log('galleryName = '+galleryName) //获取当前点击标题
         funAjax(URL,'GET',function(results) {
           var data = results.data || [],                // 返回正在上映或即将上映电影数据
               dataMov = data.movies,

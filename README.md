@@ -48,3 +48,5 @@
 23.无法在数据库movie中找到categoryName
 
 24.movie_index.js 页面分类逻辑有问题
+
+25.解决movie_index.js 页面分类逻辑问题
